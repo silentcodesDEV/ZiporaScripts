@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zipora - Ferramentas Educacionais</title>
+    <meta name="description" content="Zipora - Descubra as melhores ferramentas educacionais brasileiras com busca instantânea e interface responsiva">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzM0NzNkYyIvPgo8cGF0aCBkPSJNOCAxMmg0djhIOFYxMnptNiAwaDR2OGgtNFYxMnptNiAwaDR2OGgtNFYxMnoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <div class="login-logo">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h1>Zipora</h1>
+                    </div>
+                    <p>Faça login para acessar as ferramentas educacionais</p>
+                </div>
+
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="raInput">RA (Registro Acadêmico)</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-user"></i>
+                            <input 
+                                type="text" 
+                                id="raInput" 
+                                placeholder="Digite seu RA" 
+                                required
+                                autocomplete="username"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passwordInput">Senha</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input 
+                                type="password" 
+                                id="passwordInput" 
+                                placeholder="Digite sua senha" 
+                                required
+                                autocomplete="current-password"
+                            >
+                            <button type="button" class="toggle-password" id="togglePassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="termsCheckbox" required>
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">
+                                Aceito os 
+                                <button type="button" class="terms-link" id="openTermsBtn">
+                                    Termos de Uso
+                                </button>
+                            </span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="login-btn" id="loginBtn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Entrar
+                    </button>
+                </form>
+
+                <div class="login-footer">
+                    <p>Primeira vez aqui? Use RA+digito e senha para acessar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" class="main-app hidden">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h1>Zipora</h1>
+                    </div>
+
+                    <div class="header-actions">
+                        <!-- User Info -->
+                        <div class="user-info">
+                            <i class="fas fa-user-circle"></i>
+                            <span id="userRADisplay">RA: --</span>
+                        </div>
+                        
+                        <!-- Settings Button -->
+                        <button class="settings-btn" id="settingsBtn" title="Configurações">
+                            <i class="fas fa-cog"></i>
+                        </button>
+
+                        <!-- Logout Button -->
+                        <button class="logout-btn" id="logoutBtn" title="Sair">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <div class="container">
+                <!-- Search Section -->
+                <section class="search-section">
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            placeholder="Busque por ferramentas educacionais..."
+                            class="search-input"
+                            autocomplete="off"
+                        >
+                        <button class="search-clear" id="clearSearch" title="Limpar busca">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Tools Grid -->
+                <section class="tools-section">
+                    <div class="tools-grid" id="toolsGrid">
+                    <!-- CRSP Tool -->
+                    <div class="tool-card" data-tags="script principal automatização escolar">
+                        <div class="card-header">
+                            <div class="tool-icon">
+                                <img src="https://i.postimg.cc/KcPvw84S/file-00000000595061f4b992b46453bddbe4.png" alt="CRSP" class="tool-image">
+                            </div>
+                            <h3 class="tool-title">CRSP</h3>
+                            <span class="tool-tag">Script Principal</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="tool-description">
+                                Ferramenta principal de automatização escolar com recursos avançados para otimização de tarefas educacionais.
+                            </p>
+                            <div class="tool-features">
+                                <span class="feature-tag">Automatização</span>
+                                <span class="feature-tag">Escolar</span>
+                                <span class="feature-tag">Principal</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary copy-link-btn" data-url="https://slft.xyz/">
+                                <i class="fas fa-copy"></i>
+                                Copiar Link
+                            </button>
+                            <a href="https://apkpure.com/p/com.mentalista.crsp" class="btn btn-secondary" target="_blank" rel="noopener">
+                                <i class="fas fa-download"></i>
+                                Download APK
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Destroyer Tool -->
+                    <div class="tool-card" data-tags="destroyer escolar ferramenta educação">
+                        <div class="card-header">
+                            <div class="tool-icon">
+                                <img src="https://i.postimg.cc/KcPvw84S/file-00000000595061f4b992b46453bddbe4.png" alt="Destroyer" class="tool-image">
+                            </div>
+                            <h3 class="tool-title">Destroyer</h3>
+                            <span class="tool-tag">Ferramenta Escolar</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="tool-description">
+                                Ferramenta escolar especializada para resolução e análise de problemas educacionais complexos.
+                            </p>
+                            <div class="tool-features">
+                                <span class="feature-tag">Escolar</span>
+                                <span class="feature-tag">Painel</span>
+                                <span class="feature-tag">Resolução</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary copy-link-btn" data-url="https://darkmodde.xyz/CMSP-Hacks">
+                                <i class="fas fa-copy"></i>
+                                Copiar Link
+                            </button>
+                            <a href="https://darkmodde.xyz/CMSP-Hacks" class="btn btn-secondary" target="_blank" rel="noopener">
+                                <i class="fas fa-external-link-alt"></i>
+                                Acessar
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- LeiaSP Tool -->
+                    <div class="tool-card" data-tags="leia sp leitura materiais educacionais">
+                        <div class="card-header">
+                            <div class="tool-icon">
+                                <img src="https://i.postimg.cc/xd6ry4Pc/image-3.png" alt="LeiaSP" class="tool-image">
+                            </div>
+                            <h3 class="tool-title">LeiaSP</h3>
+                            <span class="tool-tag">Leitura</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="tool-description">
+                                Plataforma de leitura de materiais educacionais com foco em conteúdo brasileiro e recursos interativos.
+                            </p>
+                            <div class="tool-features">
+                                <span class="feature-tag">Leitura</span>
+                                <span class="feature-tag">Materiais</span>
+                                <span class="feature-tag">Interativo</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary copy-link-btn" data-url="https://leiasp.cupiditys.lol/">
+                                <i class="fas fa-copy"></i>
+                                Copiar Link
+                            </button>
+                            <a href="https://leiasp.cupiditys.lol/" class="btn btn-secondary" target="_blank" rel="noopener">
+                                <i class="fas fa-external-link-alt"></i>
+                                Acessar
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Matific Tool -->
+                    <div class="tool-card" data-tags="matific matemática app educacional">
+                        <div class="card-header">
+                            <div class="tool-icon">
+                                <img src="https://i.postimg.cc/59Y0yBxw/image-1.png" alt="Matific" class="tool-image">
+                            </div>
+                            <h3 class="tool-title">Matific</h3>
+                            <span class="tool-tag">Matemática</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="tool-description">
+                                Aplicativo de matemática interativo com jogos e exercícios adaptativos para diferentes níveis de ensino.
+                            </p>
+                            <div class="tool-features">
+                                <span class="feature-tag">Matemática</span>
+                                <span class="feature-tag">Jogos</span>
+                                <span class="feature-tag">Adaptativo</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary copy-link-btn" data-url="https://matific.cupiditys.lol/dashboard">
+                                <i class="fas fa-copy"></i>
+                                Copiar Link
+                            </button>
+                            <a href="https://matific.cupiditys.lol/dashboard" class="btn btn-secondary" target="_blank" rel="noopener">
+                                <i class="fas fa-external-link-alt"></i>
+                                Acessar
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Speak Tool -->
+                    <div class="tool-card" data-tags="speak fala treinador pronúncia idiomas">
+                        <div class="card-header">
+                            <div class="tool-icon">
+                                <img src="https://i.postimg.cc/3NDPhJQv/image-4.png" alt="Speak" class="tool-image">
+                            </div>
+                            <h3 class="tool-title">Speak</h3>
+                            <span class="tool-tag">Treinador de Fala</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="tool-description">
+                                Treinador de fala e pronúncia com tecnologia de reconhecimento de voz para aperfeiçoamento da comunicação.
+                            </p>
+                            <div class="tool-features">
+                                <span class="feature-tag">Fala</span>
+                                <span class="feature-tag">Pronúncia</span>
+                                <span class="feature-tag">IA</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary copy-link-btn" data-url="https://speak.cupiditys.lol/">
+                                <i class="fas fa-copy"></i>
+                                Copiar Link
+                            </button>
+                            <a href="https://speak.cupiditys.lol/" class="btn btn-secondary" target="_blank" rel="noopener">
+                                <i class="fas fa-external-link-alt"></i>
+                                Acessar
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Redação Tool -->
+                    <div class="tool-card" data-tags="redação escrita correção texto">
+                        <div class="card-header">
+                            <div class="tool-icon">
+                                <img src="https://i.postimg.cc/mZvrHPDK/image.png" alt="Redação" class="tool-image">
+                            </div>
+                            <h3 class="tool-title">Redação</h3>
+                            <span class="tool-tag">Escrita</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="tool-description">
+                                Ferramenta de escrita e correção de redações com feedback inteligente e sugestões de melhoria.
+                            </p>
+                            <div class="tool-features">
+                                <span class="feature-tag">Redação</span>
+                                <span class="feature-tag">Correção</span>
+                                <span class="feature-tag">Feedback</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary copy-link-btn" data-url="https://redacao.cupiditys.lol/">
+                                <i class="fas fa-copy"></i>
+                                Copiar Link
+                            </button>
+                            <a href="https://redacao.cupiditys.lol/" class="btn btn-secondary" target="_blank" rel="noopener">
+                                <i class="fas fa-external-link-alt"></i>
+                                Acessar
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- CrimsonStrauss Tool -->
+                    <div class="tool-card" data-tags="crimsonstrauss ia experimental inteligência artificial">
+                        <div class="card-header">
+                            <div class="tool-icon">
+                                <img src="https://i.postimg.cc/KcPvw84S/file-00000000595061f4b992b46453bddbe4.png" alt="CrimsonStrauss" class="tool-image">
+                            </div>
+                            <h3 class="tool-title">CrimsonStrauss</h3>
+                            <span class="tool-tag">Painel</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="tool-description">
+                                Inteligência artificial experimental para pesquisa e desenvolvimento de soluções educacionais inovadoras.
+                            </p>
+                            <div class="tool-features">
+                                <span class="feature-tag">painel</span>
+                                <span class="feature-tag">Experimental</span>
+                                <span class="feature-tag">Scripts</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary copy-link-btn" data-url="https://crimsonstrauss.xyz/">
+                                <i class="fas fa-copy"></i>
+                                Copiar Link
+                            </button>
+                            <a href="https://crimsonstrauss.xyz/" class="btn btn-secondary" target="_blank" rel="noopener">
+                                <i class="fas fa-external-link-alt"></i>
+                                Acessar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No Results Message -->
+                <div class="no-results" id="noResults">
+                    <i class="fas fa-search"></i>
+                    <h3>Nenhuma ferramenta encontrada</h3>
+                    <p>Tente buscar com termos diferentes ou verifique a ortografia.</p>
+                </div>
+            </section>
+        </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h4>Zipora</h4>
+                        <p>Democratizando o acesso às melhores ferramentas educacionais brasileiras.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Links Úteis</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" id="footerTermsBtn">Termos de Uso</a></li>
+                            <li><a href="#" id="aboutBtn">Sobre o Projeto</a></li>
+                            <li><a href="#" id="supportBtn">Suporte</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Contato</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="social-link" title="Discord">
+                                <i class="fab fa-discord"></i>
+                            </a>
+                            <a href="#" class="social-link" title="Telegram">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Feito por Silent. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Terms Modal -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>
+                    <i class="fas fa-file-contract"></i>
+                    Termos de Uso
+                </h2>
+                <button class="modal-close" id="closeTermsBtn" title="Fechar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="terms-section">
+                    <h3>1. Aceitação dos Termos</h3>
+                    <p>Ao acessar e usar este site, você aceita automaticamente estes termos de uso. Se você não concordar, não continue usando o site.</p>
+                </div>
+
+                <div class="terms-section">
+                    <h3>2. Uso Educacional</h3>
+                    <p>Este site é destinado exclusivamente para fins educacionais. As ferramentas disponibilizadas visam auxiliar no processo de aprendizagem e desenvolvimento acadêmico.</p>
+                </div>
+
+                <div class="terms-section">
+                    <h3>3. Responsabilidade do Usuário</h3>
+                    <p>O usuário é responsável pelo uso adequado das ferramentas fornecidas. É proibido usar as ferramentas para atividades ilegais ou prejudiciais.</p>
+                </div>
+
+                <div class="terms-section">
+                    <h3>4. Disponibilidade das Ferramentas</h3>
+                    <p>Não garantimos a disponibilidade contínua das ferramentas de terceiros. Os links podem estar temporariamente indisponíveis.</p>
+                </div>
+
+                <!-- Advanced Terms (Initially Hidden) -->
+                <div class="advanced-terms" id="advancedTerms">
+                    <button class="expand-btn" id="expandTermsBtn">
+                        <i class="fas fa-chevron-down"></i>
+                        Ver termos detalhados
+                    </button>
+                    
+                    <div class="expanded-content" id="expandedContent">
+                        <div class="terms-section">
+                            <h3>5. Propriedade Intelectual</h3>
+                            <p>Todo o conteúdo original deste site é propriedade dos seus respectivos criadores. As ferramentas de terceiros mantêm suas respectivas licenças.</p>
+                        </div>
+
+                        <div class="terms-section">
+                            <h3>6. Privacidade e Dados</h3>
+                            <p>Coletamos apenas dados necessários para o funcionamento básico do site (tema preferido, estado de login). Não compartilhamos informações pessoais com terceiros.</p>
+                        </div>
+
+                        <div class="terms-section">
+                            <h3>7. Modificações dos Termos</h3>
+                            <p>Reservamos o direito de modificar estes termos a qualquer momento. Alterações entrarão em vigor imediatamente após a publicação.</p>
+                        </div>
+
+                        <div class="terms-section">
+                            <h3>8. Limitação de Responsabilidade</h3>
+                            <p>Não nos responsabilizamos por danos diretos ou indiretos decorrentes do uso das ferramentas disponibilizadas através deste site.</p>
+                        </div>
+
+                        <div class="terms-section">
+                            <h3>9. Jurisdição</h3>
+                            <p>Estes termos são regidos pelas leis brasileiras. Quaisquer disputas serão resolvidas nos tribunais competentes do Brasil.</p>
+                        </div>
+
+                        <div class="terms-section">
+                            <h3>10. Contato</h3>
+                            <p>Para dúvidas sobre estes termos, entre em contato através dos canais disponibilizados no site.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="declineTermsBtn">
+                    <i class="fas fa-times"></i>
+                    Não Aceito
+                </button>
+                <button class="btn btn-primary" id="acceptTermsBtn">
+                    <i class="fas fa-check"></i>
+                    Aceito os Termos
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="settings-modal">
+        <div class="settings-content">
+            <div class="settings-header">
+                <h2><i class="fas fa-cog"></i> Configurações</h2>
+                <button id="closeSettingsBtn" class="btn-icon">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="settings-body">
+                <!-- Theme Selection -->
+                <div class="settings-section">
+                    <h3><i class="fas fa-palette"></i> Temas</h3>
+                    <div class="theme-grid">
+                        <div class="theme-option" data-theme="light">
+                            <div class="theme-preview" style="background: linear-gradient(45deg, #ffffff, #f8fafc);"></div>
+                            <div>Claro</div>
+                        </div>
+                        <div class="theme-option" data-theme="dark">
+                            <div class="theme-preview" style="background: linear-gradient(45deg, #1f2937, #111827);"></div>
+                            <div>Escuro</div>
+                        </div>
+                        <div class="theme-option" data-theme="cloudy">
+                            <div class="theme-preview" style="background: linear-gradient(45deg, #6366f1, #5b21b6);"></div>
+                            <div>Nublado</div>
+                        </div>
+                        <div class="theme-option" data-theme="ocean">
+                            <div class="theme-preview" style="background: linear-gradient(45deg, #06b6d4, #0891b2);"></div>
+                            <div>Oceano</div>
+                        </div>
+                        <div class="theme-option" data-theme="forest">
+                            <div class="theme-preview" style="background: linear-gradient(45deg, #10b981, #059669);"></div>
+                            <div>Floresta</div>
+                        </div>
+                        <div class="theme-option" data-theme="purple">
+                            <div class="theme-preview" style="background: linear-gradient(45deg, #a855f7, #9333ea);"></div>
+                            <div>Roxo</div>
+                        </div>
+                        <div class="theme-option" data-theme="sunset">
+                            <div class="theme-preview" style="background: linear-gradient(45deg, #f59e0b, #d97706);"></div>
+                            <div>Pôr do Sol</div>
+                        </div>
+                        <div class="theme-option" data-theme="rose">
+                            <div class="theme-preview" style="background: linear-gradient(45deg, #e11d48, #be123c);"></div>
+                            <div>Rosa</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Animations -->
+                <div class="settings-section">
+                    <h3><i class="fas fa-magic"></i> Animações</h3>
+                    <div class="settings-toggle">
+                        <span>Ativar animações</span>
+                        <div class="toggle-switch" id="animationsToggle">
+                        </div>
+                    </div>
+                    <div class="settings-toggle">
+                        <span>Efeitos sonoros</span>
+                        <div class="toggle-switch" id="soundToggle">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accessibility -->
+                <div class="settings-section">
+                    <h3><i class="fas fa-universal-access"></i> Acessibilidade</h3>
+                    <div class="settings-toggle">
+                        <span>Alto contraste</span>
+                        <div class="toggle-switch" id="contrastToggle">
+                        </div>
+                    </div>
+                    <div class="settings-toggle">
+                        <span>Reduzir movimento</span>
+                        <div class="toggle-switch" id="motionToggle">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reset Settings -->
+                <div class="settings-section">
+                    <h3><i class="fas fa-refresh"></i> Redefinir</h3>
+                    <button class="btn btn-secondary" id="resetSettingsBtn">
+                        <i class="fas fa-undo"></i>
+                        Restaurar Padrões
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Operação realizada com sucesso!</span>
+    </div>
+
+    <script src="script.js?v=3"></script>
+</body>
+</html>
